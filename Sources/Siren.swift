@@ -313,7 +313,7 @@ private extension Siren {
                 .default
                 .addObserver(forName: UIApplication.willResignActiveNotification,
                              object: nil,
-                             queue: nil) { [weak self] _ in
+                             queue: .main) { [weak self] _ in
                                 guard let self = self else { return }
                                 self.appDidBecomeActiveWorkItem?.cancel()
                                 self.appDidBecomeActiveWorkItem = nil
@@ -326,7 +326,7 @@ private extension Siren {
                 .default
                 .addObserver(forName: UIApplication.didEnterBackgroundNotification,
                              object: nil,
-                             queue: nil) { [weak self] _ in
+                             queue: .main) { [weak self] _ in
                                 guard let self = self else { return }
                                 self.presentationManager.cleanUp()
             }
